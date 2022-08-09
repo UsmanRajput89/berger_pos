@@ -4,7 +4,7 @@ include 'model.php';
 $obj = new database();
 
 $arr = array(
-    'name' => $_POST["name"],
+    'category_name' => $_POST["name"],
     // 'code' => $_POST["code"],
 );
 

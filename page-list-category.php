@@ -1,8 +1,7 @@
 <?php 
     include 'process/model.php'; 
     include "includes/contants.php";
-?>
-<?php 
+
     $obj = new database();
 
     $res = $obj->get_data('categories');
@@ -37,32 +36,7 @@
                             </tr>
                         </thead>
                         <tbody class="ligth-body">
-                            <!-- <tr>
-                                <td>
-                                    <div class="checkbox d-inline-block">
-                                        <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                        <label for="checkbox2" class="mb-0"></label>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="../assets/images/table/product/01.jpg" class="img-fluid rounded avatar-50 mr-3" alt="image">
-                                        <div>
-                                            Organic Cream
-                                            <p class="mb-0"><small>This is test Product</small></p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>CREM01</td>
-                                <td>Beauty</td>
-                                <td>
-                                    <div class="d-flex align-items-center list-action">
-                                        <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View" href="#"><i class="ri-eye-line mr-0"></i></a>
-                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
-                                    </div>
-                                </td>
-                            </tr> -->
+                            
                             <?php $i=1; foreach ($res as $value) : ?>
                             
                             <tr>
@@ -70,13 +44,13 @@
                                     <?php echo $i; ?>
                                 </td>
                                 <td>
-                                    <?php echo $value['name']; ?>
+                                    <?php echo $value['category_name']; ?>
                                     
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center list-action">
                                         <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href=""><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $value['id']; ?>" data-table="categories" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $value['category_id']; ?>" data-table="categories" data-col="category_id" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
                                     </div>
                                 </td>
                             </tr>

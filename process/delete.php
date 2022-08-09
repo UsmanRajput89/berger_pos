@@ -10,8 +10,9 @@
     $obj = new database();
 
     $table = $_POST['table'];
+    $col = $_POST['col'];
 
-    echo $obj->delete($table, $_POST['id']);
+    echo $obj->delete($table, $col ,$_POST['id']);
 
 ?>
 

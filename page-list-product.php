@@ -1,5 +1,15 @@
 <?php 
 
+    include 'process/model.php'; 
+    include "includes/contants.php";
+
+    $obj = new database();
+
+    $products = $obj->join_double('products', 'categories', 'category', 'category_id');
+
+    // echo '<pre>';
+    // var_dump($res);
+    // echo '</pre>';
 
     session_start();
     if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
@@ -19,49 +29,44 @@
                         <h4 class="mb-3">Product List</h4>
                         <p class="mb-0">The product list effectively dictates product presentation and provides space<br> to list your products and offering in the most appealing way.</p>
                     </div>
-                    <a href="page-add-product.html" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Product</a>
+                    <a href="page-add-product.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Product</a>
                 </div>
             </div>
+
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
                     <table class="data-table table mb-0 tbl-server-info">
                         <thead class="bg-white text-uppercase">
                             <tr class="ligth ligth-data">
                                 <th>Product</th>
-                                <th>Code</th>
+                                <th>SKU</th>
                                 <th>Category</th>
                                 <th>Price</th>
-                                <!-- <th>Brand Name</th> -->
-                                <!-- <th>Cost</th> -->
-                                <!-- <th>Quantity</th> -->
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="ligth-body">
+                            
+                            <?php foreach ($products as $product) : ?>
+                            
                             <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/table/product/01.jpg" class="img-fluid rounded avatar-50 mr-3" alt="image">
-                                        <div>
-                                            Organic Cream
-                                            <!-- <p class="mb-0"><small>This is test Product</small></p> -->
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>CREM01</td>
-                                <td>Beauty</td>
-                                <td>$25.00</td>
-                                <!-- <td>Lakme</td> -->
-                                <!-- <td>$10.00</td> -->
-                                <!-- <td>10.0</td> -->
+                                <?php //echo $product['name']; ?>
+                                
+                                <td><?php echo $product['name']; ?></td>
+                                <td><?php echo $product['sku']; ?></td>
+                                <td><?php echo $product['category_name']; ?></td>
+                                <td><?php echo $product['price']; ?></td>
+                                
                                 <td>
                                     <div class="d-flex align-items-center list-action">
-                                        <!-- <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View" href="#"><i class="ri-eye-line mr-0"></i></a> -->
-                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="page-edit-product.php?id=<?php echo $product['id']; ?>"><i class="ri-pencil-line mr-0"></i></a>
+                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $product['id']; ?>" data-table="products" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
                                     </div>
                                 </td>
                             </tr>
+                            
+                            <?php  endforeach; ?>
                             
                         </tbody>
                     </table>

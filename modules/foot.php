@@ -33,7 +33,7 @@
 <script src="assets/js/customizer.js"></script>
 
 <!-- Chart Custom JavaScript -->
-<!-- <script async src="assets/js/chart-custom.js"></script> -->
+<script async src="assets/js/chart-custom.js"></script>
 
 <!-- app JavaScript -->
 <script src="assets/js/app.js"></script>

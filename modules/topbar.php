@@ -9,12 +9,12 @@
 
                 </a>
             </div>
-            <div class="iq-search-bar device-search">
+            <!-- <div class="iq-search-bar device-search">
                 <form action="#" class="searchbox">
                     <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                     <input type="text" class="text search-input" placeholder="Search here...">
                 </form>
-            </div>
+            </div> -->
             <div class="d-flex align-items-center">
                 <!-- <div class="change-mode">
                     <div class="custom-control custom-switch custom-switch-icon custom-control-inline">

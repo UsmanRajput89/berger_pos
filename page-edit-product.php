@@ -2,9 +2,14 @@
     include 'process/model.php'; 
     include "includes/contants.php";
     
+    $id = $_GET['id'];
     $obj = new database();
 
     $categories = $obj->get_data('categories');
+
+    $product = $obj->one_row('products', 'categories', 'category', 'category_id', $id);
+
+
     session_start();
     if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
 
@@ -27,17 +32,20 @@
                         <form action="process/add_product.php" data-toggle="validator" method="POST">
                             <div class="row">
                                 
+                                
+                                <input type="text" name="id" id="" value="<?php echo $id; ?>" hidden>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Name *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="name" required>
+                                        <input type="text" class="form-control" placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="name" required value="<?php echo $product['name']; ?>">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>SKU *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." name="sku" required>
+                                        <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." name="sku" required value="<?php echo $product['sku']; ?>">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -58,25 +66,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Price *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="price" required>
+                                        <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="price" required value="<?php echo $product['price']; ?>">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 
-                                <!-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" class="form-control image-file" name="pic" accept="image/*">
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Description / Product Details</label>
-                                        <textarea class="form-control" rows="4"></textarea>
-                                    </div>
-                                </div> -->
+                               
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                            <button type="submit" class="btn btn-primary mr-2">Update Product</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
                     </div>
