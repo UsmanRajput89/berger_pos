@@ -129,7 +129,7 @@
                         </li>
                     </ul>
                 </li>
-                <!-- <li class=" ">
+                <li class=" ">
                     <a href="pages-invoice.php" class="svg-icon">
                         <svg class="svg-icon" id="p-dash16" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
@@ -139,7 +139,7 @@
                         <span class="ml-4">Invoices</span>
                     </a>
 
-                </li> -->
+                </li>
                 <li class="">
                     
                     <a href="page-report.php" class="">

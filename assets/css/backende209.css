@@ -5906,8 +5906,11 @@ a.close.disabled {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 500px;
+        max-width: 600px;
         margin: 1.75rem auto
+    }
+    .modal-dialogue form{
+        padding: 0px 30px 30px;
     }
 
     .modal-dialog-scrollable {
@@ -11326,7 +11329,7 @@ a.text-light-gray:focus {
     top: 0;
     left: auto;
     right: 0;
-    width: calc(100% - 260px);
+    width: 100%;
     display: inline-block;
     z-index: 99;
     margin: 0;
@@ -21246,9 +21249,9 @@ g[aria-describedby="id-22-description"] {
 }
 
 @media (min-width: 1300px) {
-    body.sidebar-main .content-page {
+    /* body.sidebar-main .content-page {
         margin-left: 70px
-    }
+    } */
 
     body.sidebar-main .iq-menu-bt-sidebar {
         display: block;
@@ -21257,9 +21260,9 @@ g[aria-describedby="id-22-description"] {
         padding-left: 0
     }
 }
-.sidebar-main .content-page{
+/* .sidebar-main .content-page{
     margin-left: 260px;
-}
+} */
 @media (max-width: 1299px) {
     .content-page {
         /* margin-left: 0; */
@@ -29206,9 +29209,36 @@ i {
         margin-left: 10px
     }
 }
-.invoice-table .dataTables_info, .invoice-table .dataTables_paginate, .invoice-table .dataTables_length,.invoice-table .dataTables_filter {
+/* .invoice-table .dataTables_info, .invoice-table .dataTables_paginate, .invoice-table .dataTables_length,.invoice-table .dataTables_filter {
     display: none;
+} */
+.add_invoice_item{
+    position: relative;
+    top: 40px;
 }
-
-
+.main-page-menu .item-mm h4{
+    margin-top: 10px;
+}
+.main-page-menu .item-mm a{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid var(--blue);
+    box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.09);
+    border-radius: 13px;
+    padding: 10px 20px;
+}
+.topbar-menu-logo img{
+    height: 60px;
+    /* width: 100%; */
+}
+.topbar-menu a{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #005aaa;
+    /* font: 500 normal var(--font-family-sans-serif) 19px; */
+}
+.modal-content form{
+    padding: 20px;
+}
 /*# sourceMappingURL=maps/backend.css.map */

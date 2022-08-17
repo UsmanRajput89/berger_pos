@@ -1,6 +1,6 @@
 </div>
 <!-- Wrapper End-->
-<footer class="iq-footer">
+<!-- <footer class="iq-footer">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -22,18 +22,22 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
 <!-- Backend Bundle JavaScript -->
 <script src="assets/js/backend-bundle.min.js"></script>
 
 <!-- Table Treeview JavaScript -->
-<script src="assets/js/table-treeview.js"></script>
+<!-- <script src="assets/js/table-treeview.js"></script> -->
 
 <!-- Chart Custom JavaScript -->
-<script src="assets/js/customizer.js"></script>
+<!-- <script src="assets/js/customizer.js"></script> -->
 
 <!-- Chart Custom JavaScript -->
-<script async src="assets/js/chart-custom.js"></script>
+<!-- <script async src="assets/js/chart-custom.js"></script> -->
+
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"/> -->
 
 <!-- app JavaScript -->
 <script src="assets/js/app.js"></script>

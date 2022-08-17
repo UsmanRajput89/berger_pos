@@ -98,16 +98,31 @@ class database{
     public function product_same_cat($category){
         $array = array();
 
-        $query = "SELECT * FROM products WHERE category = $category";
+        $query = "SELECT * FROM products WHERE category = '$category'";
     
-        die($query);
+        // die($query);
 
         $result = $this->mysqli->query($query);
+        
+        while($row = mysqli_fetch_assoc($result))    
+        {  
+            $array[] = $row;  
+        }  
+        return $array;
+    }
+
+    public function select_row_table($table, $col, $id){
+        $array = array();
+        $query = "SELECT * FROM $table WHERE $col='$id'";
+        
+        $result = $this->mysqli->query($query);
+        
         while($row = mysqli_fetch_assoc($result))  
         {  
             $array[] = $row;  
         }  
-        return $row;
+
+        return $array[0];
     }
 }
 ?>

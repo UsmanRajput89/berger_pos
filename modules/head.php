@@ -21,7 +21,7 @@
 <body >
     <div class="wrapper">   
 
-        <?php include 'modules/sidebar.php'; ?>
+        
 
         <?php include 'modules/topbar.php'; ?>
 

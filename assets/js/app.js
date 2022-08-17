@@ -1,9 +1,3 @@
-/*
-Template: ProX - Responsive Bootstrap 4 Admin Dashboard Template
-Author: iqonicthemes.in
-Design and Developed by: iqonicthemes.in
-NOTE: This file contains the styling for responsive Template.
-*/
 
 /*----------------------------------------------
 Index Of Script
@@ -256,28 +250,29 @@ Index Of Script
         }, 100);
     });
 
+
+    
+
     /*---------------------------------------------------------------------
           Page Menu
           -----------------------------------------------------------------------*/
-    jQuery(document).on("click", ".wrapper-menu", function () {
-        jQuery(this).toggleClass("open");
-        // $(".sidebar-main .content-page").css('margin-left', '0px')
-    });
+    // jQuery(document).on("click", ".wrapper-menu", function () {
+    //     jQuery(this).toggleClass("open");
+    //     // $(".sidebar-main .content-page").css('margin-left', '0px')
+    // });
 
-    jQuery(document).on("click", ".wrapper-menu", function () {
-        jQuery("body").toggleClass("sidebar-main");
-        // $(".sidebar-main .content-page").css('margin-left', '260px')
+    // jQuery(document).on("click", ".wrapper-menu", function () {
+    //     jQuery("body").toggleClass("sidebar-main");
 
-    });
+    // });
 
     /*---------------------------------------------------------------------
          Close  navbar Toggle
          -----------------------------------------------------------------------*/
 
-    jQuery(".close-toggle").on("click", function () {
-        jQuery(".h-collapse.navbar-collapse").collapse("hide");
-        // $(".content-page").css('margin-left', '0px')
-    });
+    // jQuery(".close-toggle").on("click", function () {
+    //     jQuery(".h-collapse.navbar-collapse").collapse("hide");
+    // });
 
     /*---------------------------------------------------------------------
           Mailbox
@@ -375,15 +370,17 @@ Index Of Script
     }
 
     /*---------------------------------------------------------------------
-          Data tables
-          -----------------------------------------------------------------------*/
+        Data tables
+    -----------------------------------------------------------------------*/
+
+
     if ($.fn.DataTable) {
         $(".data-table").DataTable();
     }
 
     /*---------------------------------------------------------------------
-          Form Validation
-          -----------------------------------------------------------------------*/
+        Form Validation
+    -----------------------------------------------------------------------*/
 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     window.addEventListener(
@@ -526,92 +523,92 @@ Index Of Script
     /*---------------------------------------------------------------------
           Sweet alt Delete
           -----------------------------------------------------------------------*/
-    $('[data-extra-toggle="delete"]').on("click", function (e) {
-        const closestElem = $(this).attr("data-closest-elem");
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: "btn btn-primary",
-                cancelButton: "btn btn-outline-primary ml-2",
-            },
-            buttonsStyling: false,
-        });
+    // $('[data-extra-toggle="delete"]').on("click", function (e) {
+    //     const closestElem = $(this).attr("data-closest-elem");
+    //     const swalWithBootstrapButtons = Swal.mixin({
+    //         customClass: {
+    //             confirmButton: "btn btn-primary",
+    //             cancelButton: "btn btn-outline-primary ml-2",
+    //         },
+    //         buttonsStyling: false,
+    //     });
 
-        swalWithBootstrapButtons
-            .fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, delete it!",
-                showClass: {
-                    popup: "animate__animated animate__zoomIn",
-                },
-                hideClass: {
-                    popup: "animate__animated animate__zoomOut",
-                },
-            })
-            .then((willDelete) => {
-                if (willDelete.isConfirmed) {
-                    swalWithBootstrapButtons
-                        .fire({
-                            title: "Deleted!",
-                            text: "Your note has been deleted.",
-                            icon: "success",
-                            showClass: {
-                                popup: "animate__animated animate__zoomIn",
-                            },
-                            hideClass: {
-                                popup: "animate__animated animate__zoomOut",
-                            },
-                        })
-                        .then(() => {
-                            if (closestElem == ".card") {
-                                $(this).closest(closestElem).parent().remove();
-                            } else {
-                                $(this).closest(closestElem).remove();
-                            }
-                        });
-                } else {
-                    swalWithBootstrapButtons.fire({
-                        title: "Your note is safe!",
-                        showClass: {
-                            popup: "animate__animated animate__zoomIn",
-                        },
-                        hideClass: {
-                            popup: "animate__animated animate__zoomOut",
-                        },
-                    });
-                }
-            });
-    });
+    //     swalWithBootstrapButtons
+    //         .fire({
+    //             title: "Are you sure?",
+    //             text: "You won't be able to revert this!",
+    //             icon: "warning",
+    //             showCancelButton: true,
+    //             confirmButtonText: "Yes, delete it!",
+    //             showClass: {
+    //                 popup: "animate__animated animate__zoomIn",
+    //             },
+    //             hideClass: {
+    //                 popup: "animate__animated animate__zoomOut",
+    //             },
+    //         })
+    //         .then((willDelete) => {
+    //             if (willDelete.isConfirmed) {
+    //                 swalWithBootstrapButtons
+    //                     .fire({
+    //                         title: "Deleted!",
+    //                         text: "Your note has been deleted.",
+    //                         icon: "success",
+    //                         showClass: {
+    //                             popup: "animate__animated animate__zoomIn",
+    //                         },
+    //                         hideClass: {
+    //                             popup: "animate__animated animate__zoomOut",
+    //                         },
+    //                     })
+    //                     .then(() => {
+    //                         if (closestElem == ".card") {
+    //                             $(this).closest(closestElem).parent().remove();
+    //                         } else {
+    //                             $(this).closest(closestElem).remove();
+    //                         }
+    //                     });
+    //             } else {
+    //                 swalWithBootstrapButtons.fire({
+    //                     title: "Your note is safe!",
+    //                     showClass: {
+    //                         popup: "animate__animated animate__zoomIn",
+    //                     },
+    //                     hideClass: {
+    //                         popup: "animate__animated animate__zoomOut",
+    //                     },
+    //                 });
+    //             }
+    //         });
+    // });
 
-    if ($.fn.slick !== undefined && $(".top-product").length > 0) {
-        jQuery(".top-product").slick({
-            slidesToShow: 3,
-            speed: 300,
-            slidesToScroll: 1,
-            focusOnSelect: true,
-            autoplay: true,
-            arrows: false,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: false,
-                        slidesToShow: 2,
-                    },
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        autoplay: true,
-                        slidesToShow: 1,
-                    },
-                },
-            ],
-        });
-    }
+    // if ($.fn.slick !== undefined && $(".top-product").length > 0) {
+    //     jQuery(".top-product").slick({
+    //         slidesToShow: 3,
+    //         speed: 300,
+    //         slidesToScroll: 1,
+    //         focusOnSelect: true,
+    //         autoplay: true,
+    //         arrows: false,
+    //         responsive: [
+    //             {
+    //                 breakpoint: 768,
+    //                 settings: {
+    //                     arrows: false,
+    //                     slidesToShow: 2,
+    //                 },
+    //             },
+    //             {
+    //                 breakpoint: 480,
+    //                 settings: {
+    //                     arrows: false,
+    //                     autoplay: true,
+    //                     slidesToShow: 1,
+    //                 },
+    //             },
+    //         ],
+    //     });
+    // }
 
     $("body").on("click", ".delete", function (e) {
         e.preventDefault();
@@ -640,35 +637,163 @@ Index Of Script
         });
     });
 
-    console.log('Working out');
 
-    $("body").on("change", "#category", function () {
-        console.log('Working');
-        // let category_id = $('#category').val();
-        let category_id = $("#category option:selected").text();
-        console.log(category_id);
-        
-        // load_data('products', category_id);
-        
-    });
 
-    function load_data(table, id){
+
+    // let table = $(".table");
+    // // console.log(table);
+    // let table_obj = tableToObj(table);
+    // console.log(table_obj);
+
+    $("body").on("click", "#add_invoice_item", function (e) {
+        e.preventDefault();
+        // console.log("working");
+
+        let myform = $("#invoice_form")[0];
+        let fd = new FormData(myform);
+        // console.log(fd);
+
         $.ajax({
-            url: "process/get_products_same_cat.php",
+            url: "process/calculate_invoice.php",
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
             type: 'POST',
-            // cache: false,
-            data: {
-                table: table,
-                id: id
-            },
+            dataType: 'JSON',
             success: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log("Error");
+                append_tr(response);
             }
         });
+
+    });
+
+
+    function append_tr(row) {
+        let elem = `<tr>
+        <th class="text-center" scope="row">#</th>
+        <td class="text-center">${row.name}</td>
+        <td class="text-center">${row.qty}</td>
+        <td class="text-center">${row.price}</td>
+        <td class="text-center total" data-value="${row.total}"><b>${row.total}</b></td>
+        </tr>`;
+
+        $(".invoice-table table tbody").append(elem);
+
+        var grandTotal = 0;
+
+        $('.total').each(function () {
+            var rowTotal = parseFloat($(this).attr('data-value'));
+            grandTotal = rowTotal + grandTotal;
+            $("td.grandTotal").text("PKR " + grandTotal );
+        });
+
+
+
     }
+
+
+    $("body").on("submit", "#product_form", function (e) {
+        // e.preventDefault();
+        // console.log("working");
+
+        let myform = $(this)[0];
+        let fd = new FormData(myform);
+        console.log(fd);
+
+        $.ajax({
+            url: "process/add_product.php",
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function (response) {
+                // append_tr(response);
+                // console.log('ok');
+                window.location.reload();
+            }
+        });
+
+    });
+
+    $("body").on("submit", "#category_form", function (e) {
+        // e.preventDefault();
+
+        let myform = $(this)[0];
+        let fd = new FormData(myform);
+        console.log(fd);
+
+        $.ajax({
+            url: "process/add_category.php",
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+
+    $("body").on("submit", "#customer_form", function (e) {
+        // e.preventDefault();
+
+        let myform = $(this)[0];
+        let fd = new FormData(myform);
+
+        $.ajax({
+            url: "process/add_customer.php",
+            data: fd,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            dataType: 'JSON',
+            success: function (response) {
+                console.log(response);
+                window.location.reload(true);
+            }
+        });
+
+    });
+
 
 })(jQuery);
 
+
+$("body").on("change", "#category", function () {
+    console.log('Working');
+    // let category_id = $('#category').val();
+    // let category_id = $("#category option:selected").val();
+    // console.log(category_id);
+
+    let myform = $("#invoice_form")[0];
+    let fd = new FormData(myform);
+
+    load_data('products', fd);
+
+});
+
+// function load_data(table, form) {
+//     $.ajax({
+//         url: "process/get_products_same_cat.php",
+//         data: form,
+//         cache: false,
+//         processData: false,
+//         contentType: false,
+//         type: 'POST',
+//         dataType: 'JSON',
+//         success: function (response) {
+//             // console.log(response);
+//             response.forEach(element => {
+//                 // console.log(element.name);
+//                 let elem = `<option value="${element.id}">${element.name}</option>`;
+//                 // $("#product_select").append(elem);
+//             });
+//         }
+//     });
+// }

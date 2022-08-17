@@ -40,8 +40,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                         its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
                                         opposed to using 'Content here, content here', making it look like readable English.</p>
                                 </div>
-                            </div>z
-                            <div class="row">
+                            </div>
+                            <!-- <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive-sm">
                                         <table class="table">
@@ -78,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h5 class="mb-3">Order Summary</h5>
@@ -146,37 +146,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                             <div class="row">
                                 <div class="col-sm-12">
                                     <b class="text-danger">Notes:</b>
-                                    <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page
-                                        when looking
-                                        at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-                                        as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                    <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page</p>
                                 </div>
                             </div>
                             <div class="row mt-4 mb-3">
-                                <div class="offset-lg-8 col-lg-4">
+                                <div class="offset-lg-6 col-lg-6">
                                     <div class="or-detail rounded">
                                         <div class="p-3">
                                             <h5 class="mb-3">Order Details</h5>
-                                            <div class="mb-2">
+                                            <!-- <div class="mb-2">
                                                 <h6>Bank</h6>
                                                 <p>Threadneedle St</p>
                                             </div>
                                             <div class="mb-2">
                                                 <h6>Acc. No</h6>
                                                 <p>12333456789</p>
-                                            </div>
+                                            </div> -->
                                             <div class="mb-2">
-                                                <h6>Due Date</h6>
+                                                <h6>Date</h6>
                                                 <p>12 August 2020</p>
                                             </div>
                                             <div class="mb-2">
-                                                <h6>Sub Total</h6>
+                                                <h6>Total</h6>
                                                 <p>$4597.50</p>
                                             </div>
-                                            <div>
+                                            <!-- <div>
                                                 <h6>Discount</h6>
                                                 <p>10%</p>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="ttl-amt py-2 px-3 d-flex justify-content-between align-items-center">
                                             <h6>Total</h6>

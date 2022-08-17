@@ -10,10 +10,8 @@ $arr = array(
     'customer_city' => $_POST["city"],
 );
 
-$obj->insert('customers', $arr);
+$res = $obj->insert('customers', $arr);
 
-
-header('Location: ' . $_SERVER['HTTP_REFERER']);
-
+echo $res;
 ?>
 

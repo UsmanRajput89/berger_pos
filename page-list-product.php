@@ -7,9 +7,7 @@
 
     $products = $obj->join_double('products', 'categories', 'category', 'category_id');
 
-    // echo '<pre>';
-    // var_dump($res);
-    // echo '</pre>';
+    $categories = $obj->get_data('categories');
 
     session_start();
     if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
@@ -19,9 +17,8 @@
 
 <?php include 'modules/head.php'; ?>
 
-
 <div class="content-page">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
@@ -29,19 +26,29 @@
                         <h4 class="mb-3">Product List</h4>
                         <p class="mb-0">The product list effectively dictates product presentation and provides space<br> to list your products and offering in the most appealing way.</p>
                     </div>
-                    <a href="page-add-product.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Product</a>
+                    
+                    <!-- <a href="page-add-product.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Product</a> -->
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form">
+                        Add Product
+                    </button> 
                 </div>
             </div>
 
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
-                    <table class="data-table table mb-0 tbl-server-info">
+                    <table class="data-table">
                         <thead class="bg-white text-uppercase">
                             <tr class="ligth ligth-data">
                                 <th>Product</th>
-                                <th>SKU</th>
+                                <th>Code</th>
                                 <th>Category</th>
-                                <th>Price</th>
+                                <th>Gallon Price</th>
+                                <th>Gallon Quantity</th>
+                                <th>Quarter Price</th>
+                                <th>Quarter Quantity</th>
+                                <th>Dabbi Price</th>
+                                <th>Dabbi Quantity</th>
                                 
                                 <th>Action</th>
                             </tr>
@@ -56,12 +63,17 @@
                                 <td><?php echo $product['name']; ?></td>
                                 <td><?php echo $product['sku']; ?></td>
                                 <td><?php echo $product['category_name']; ?></td>
-                                <td><?php echo $product['price']; ?></td>
+                                <td><?php echo $product['gallon_price']; ?></td>
+                                <td><?php echo $product['gallon_quantity']; ?></td>
+                                <td><?php echo $product['quarter_price']; ?></td>
+                                <td><?php echo $product['quarter_quantity']; ?></td>
+                                <td><?php echo $product['dabbi_price']; ?></td>
+                                <td><?php echo $product['dabbi_quantity']; ?></td>
                                 
                                 <td>
                                     <div class="d-flex align-items-center list-action">
                                         <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="page-edit-product.php?id=<?php echo $product['id']; ?>"><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $product['id']; ?>" data-table="products" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $product['id']; ?>" data-table="products" data-col="id" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -76,7 +88,7 @@
         <!-- Page end  -->
     </div>
     <!-- Modal Edit -->
-    <div class="modal fade" id="edit-note" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- <div class="modal fade" id="edit-note" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -106,6 +118,107 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="container">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+        See Modal with Form
+    </button>  
+    </div> -->
+
+    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Poduct</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="#" data-toggle="validator" method="POST" id="product_form">
+                    <div class="row px-10 mx-10">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input type="text" class="form-control" placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="name" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>SKU *</label>
+                                <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." name="sku" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Category *</label>
+                                <select name="category" class="selectpicker form-control" data-style="py-0">
+                                    
+                                    <?php foreach ($categories as $category) : ?>
+                                        <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?> </option>
+                                    <?php endforeach; ?>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gallon Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="gallon_price" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gallon Quantity *</label>
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="gallon_price">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quarter Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="quarter_price" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quarter Quantity *</label>
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="quarter_quantity">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Dabbi Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="dabbi_price" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Dabbi Quantity *</label>
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="dabbi_quantity">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </form>
             </div>
         </div>
     </div>

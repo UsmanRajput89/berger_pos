@@ -8,14 +8,15 @@ $arr = array(
     // 'code' => $_POST["code"],
 );
 
-$obj->insert('categories', $arr);
+$res = $obj->insert('categories', $arr);
 
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+// echo '<pre>';
+// var_dump($res);
+// echo '</pre>';
+// echo '1';
 
-
-
-
+// header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 
 ?>
