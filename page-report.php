@@ -5,8 +5,21 @@ include "includes/contants.php";
 // $id = $_GET['id'];
 $obj = new database();
 
-$categories = $obj->get_data('categories');
+$query = "SELECT customer_id,
+DATEDIFF(CURDATE(), date) AS date,
+SUM(IF(date = 0, invoice_amount, 0)),
+SUM(IF(date BETWEEN 1 AND 30, invoice_amount, 0)),
+SUM(IF(date BETWEEN 31 AND 60, invoice_amount, 0)),
+SUM(IF(date BETWEEN 61 AND 90, invoice_amount, 0)),
+SUM(IF(date > 90, invoice_amount, 0))
+FROM sales
+GROUP BY customer_id";
 
+$data = $obj->custom_query($query);
+
+// echo '<pre>';
+// var_dump($data);
+// echo '</pre>';
 // $product = $obj->one_row('products', 'categories', 'category', 'category_id', $id);
 
 
@@ -63,7 +76,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
-                                <tr class="ligth ligth-data">
+                                <!-- <tr class="ligth ligth-data">
                                     <td>0000</td>
                                     <td>Johnson</td>
                                     <td>Lahore</td>
@@ -78,7 +91,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     <th>Under 2 Years</th>
                                     <th>Under 3 Years</th>
                                     <th>Over 4 Years</th>
-                                </tr>
+                                </tr> -->
                             </tbody>
                             <!-- <tfoot>
                                 <tr>

@@ -233,7 +233,7 @@
                             <td><?php echo $ld['invoice_number']; ?></td>
                             <td><?php echo $ld['invoice_amount']; ?></td>
                             <td><?php echo $ld['amount_recieved']; ?></td>
-                            <td><?php echo $ld['invoice_amount'] - $ld['amount_recieved']; ?></td>
+                            <td><?php echo $ld['amount_recieved'] - $ld['invoice_amount'] ; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     
