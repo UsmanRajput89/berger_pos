@@ -3,18 +3,22 @@ include 'model.php';
 
 $obj = new database();
 
-$arr = array(
-    'category_name' => $_POST["name"],
-    // 'code' => $_POST["code"],
-);
 
-$res = $obj->insert('categories', $arr);
+if (empty($_POST['category_id'])) {
+    $arr = array(
+        'category_name' => $_POST["name"],
+    );
+    $res = $obj->insert('categories', $arr);
+}else{
+    
+    $arr = array(
+        'category_id' => $_POST["category_id"],
+        'category_name' => $_POST["name"],
+    );
+    $res = $obj->update('categories', $arr, 'category_id',$_POST["category_id"]);
 
+}
 
-// echo '<pre>';
-// var_dump($res);
-// echo '</pre>';
-// echo '1';
 
 // header('Location: ' . $_SERVER['HTTP_REFERER']);
 

@@ -22,7 +22,7 @@ class database{
         $result = $this->mysqli->query($sql);
     }
 
-    public function update($table,$para=array(),$id){
+    public function update($table,$para=array(),$col_id,$id){
         $args = array();
 
         foreach ($para as $key => $value) {
@@ -31,7 +31,9 @@ class database{
 
         $sql="UPDATE  $table SET " . implode(',', $args);
 
-        $sql .=" WHERE $id";
+        $sql .=" WHERE $col_id = $id";
+
+        // die($sql);
 
         $result = $this->mysqli->query($sql);
     }
@@ -62,13 +64,12 @@ class database{
         $query = "SELECT $col FROM $table WHERE id='$id'";
         
         $result = $this->mysqli->query($query);
-        
-        while($row = mysqli_fetch_assoc($result))  
-        {  
-            $array[] = $row;  
-        }  
-
-        return $array;
+        $row = mysqli_fetch_assoc($result);
+        // while($row = mysqli_fetch_assoc($result))  
+        // {  
+        //     $array[] = $row;  
+        // }  
+        return $row;
     }
 
     public function join_double($table1 , $table2 , $t1_col, $t2_col){
@@ -115,6 +116,8 @@ class database{
         $array = array();
         $query = "SELECT * FROM $table WHERE $col='$id'";
         
+        // die($query);
+
         $result = $this->mysqli->query($query);
         
         while($row = mysqli_fetch_assoc($result))  
@@ -124,6 +127,23 @@ class database{
 
         return $array[0];
     }
+
+    public function custom_query($query){
+        $array = array();
+        // $query = "SELECT * FROM $table WHERE $col='$id'";
+        
+        $result = $this->mysqli->query($query);
+        
+        while($row = mysqli_fetch_assoc($result))  
+        {  
+            $array[] = $row;  
+        }  
+
+        return $array;
+    }
+
+
+
 }
 ?>
 

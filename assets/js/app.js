@@ -520,95 +520,7 @@ Index Of Script
         }
     });
 
-    /*---------------------------------------------------------------------
-          Sweet alt Delete
-          -----------------------------------------------------------------------*/
-    // $('[data-extra-toggle="delete"]').on("click", function (e) {
-    //     const closestElem = $(this).attr("data-closest-elem");
-    //     const swalWithBootstrapButtons = Swal.mixin({
-    //         customClass: {
-    //             confirmButton: "btn btn-primary",
-    //             cancelButton: "btn btn-outline-primary ml-2",
-    //         },
-    //         buttonsStyling: false,
-    //     });
-
-    //     swalWithBootstrapButtons
-    //         .fire({
-    //             title: "Are you sure?",
-    //             text: "You won't be able to revert this!",
-    //             icon: "warning",
-    //             showCancelButton: true,
-    //             confirmButtonText: "Yes, delete it!",
-    //             showClass: {
-    //                 popup: "animate__animated animate__zoomIn",
-    //             },
-    //             hideClass: {
-    //                 popup: "animate__animated animate__zoomOut",
-    //             },
-    //         })
-    //         .then((willDelete) => {
-    //             if (willDelete.isConfirmed) {
-    //                 swalWithBootstrapButtons
-    //                     .fire({
-    //                         title: "Deleted!",
-    //                         text: "Your note has been deleted.",
-    //                         icon: "success",
-    //                         showClass: {
-    //                             popup: "animate__animated animate__zoomIn",
-    //                         },
-    //                         hideClass: {
-    //                             popup: "animate__animated animate__zoomOut",
-    //                         },
-    //                     })
-    //                     .then(() => {
-    //                         if (closestElem == ".card") {
-    //                             $(this).closest(closestElem).parent().remove();
-    //                         } else {
-    //                             $(this).closest(closestElem).remove();
-    //                         }
-    //                     });
-    //             } else {
-    //                 swalWithBootstrapButtons.fire({
-    //                     title: "Your note is safe!",
-    //                     showClass: {
-    //                         popup: "animate__animated animate__zoomIn",
-    //                     },
-    //                     hideClass: {
-    //                         popup: "animate__animated animate__zoomOut",
-    //                     },
-    //                 });
-    //             }
-    //         });
-    // });
-
-    // if ($.fn.slick !== undefined && $(".top-product").length > 0) {
-    //     jQuery(".top-product").slick({
-    //         slidesToShow: 3,
-    //         speed: 300,
-    //         slidesToScroll: 1,
-    //         focusOnSelect: true,
-    //         autoplay: true,
-    //         arrows: false,
-    //         responsive: [
-    //             {
-    //                 breakpoint: 768,
-    //                 settings: {
-    //                     arrows: false,
-    //                     slidesToShow: 2,
-    //                 },
-    //             },
-    //             {
-    //                 breakpoint: 480,
-    //                 settings: {
-    //                     arrows: false,
-    //                     autoplay: true,
-    //                     slidesToShow: 1,
-    //                 },
-    //             },
-    //         ],
-    //     });
-    // }
+    
 
     $("body").on("click", ".delete", function (e) {
         e.preventDefault();
@@ -651,7 +563,6 @@ Index Of Script
 
         let myform = $("#invoice_form")[0];
         let fd = new FormData(myform);
-        // console.log(fd);
 
         $.ajax({
             url: "process/calculate_invoice.php",
@@ -670,23 +581,32 @@ Index Of Script
 
 
     function append_tr(row) {
+        console.log(row);
         let elem = `<tr>
-        <th class="text-center" scope="row">#</th>
+        <td class="text-center total"> 
+            <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="${row.invoice_number}" data-table="invoices" data-col="invoice_number" data-placement="top" title="" data-original-title="Delete" href="#">
+                <i class="ri-delete-bin-line mr-0"></i>
+            </a>
+        </td>
         <td class="text-center">${row.name}</td>
         <td class="text-center">${row.qty}</td>
+        <td class="text-center">${row.pcs}</td>
         <td class="text-center">${row.price}</td>
         <td class="text-center total" data-value="${row.total}"><b>${row.total}</b></td>
+
         </tr>`;
 
         $(".invoice-table table tbody").append(elem);
 
-        var grandTotal = 0;
+        // var grandTotal = 0;
 
-        $('.total').each(function () {
-            var rowTotal = parseFloat($(this).attr('data-value'));
-            grandTotal = rowTotal + grandTotal;
-            $("td.grandTotal").text("PKR " + grandTotal );
-        });
+        // $('.total').each(function () {
+        //     var rowTotal = parseFloat($(this).attr('data-value'));
+        //     grandTotal = rowTotal + grandTotal;
+        //     $("td.grandTotal").text("PKR " + grandTotal );
+        //     // echo grandTotal;
+        //     console.log("each working");
+        // });
 
 
 
@@ -710,9 +630,6 @@ Index Of Script
             type: 'POST',
             dataType: 'JSON',
             success: function (response) {
-                // append_tr(response);
-                // console.log('ok');
-                window.location.reload();
             }
         });
 
@@ -723,7 +640,7 @@ Index Of Script
 
         let myform = $(this)[0];
         let fd = new FormData(myform);
-        console.log(fd);
+        // console.log(fd);
 
         $.ajax({
             url: "process/add_category.php",
@@ -734,7 +651,7 @@ Index Of Script
             type: 'POST',
             dataType: 'JSON',
             success: function (response) {
-                console.log(response);
+                // console.log(response);
             }
         });
     });
@@ -765,18 +682,15 @@ Index Of Script
 })(jQuery);
 
 
-$("body").on("change", "#category", function () {
-    console.log('Working');
-    // let category_id = $('#category').val();
-    // let category_id = $("#category option:selected").val();
-    // console.log(category_id);
+// $("body").on("change", "#category", function () {
+//     console.log('Working');
 
-    let myform = $("#invoice_form")[0];
-    let fd = new FormData(myform);
+//     let myform = $("#invoice_form")[0];
+//     let fd = new FormData(myform);
 
-    load_data('products', fd);
+//     load_data('products', fd);
 
-});
+// });
 
 // function load_data(table, form) {
 //     $.ajax({

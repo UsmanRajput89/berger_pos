@@ -7,18 +7,40 @@ $obj = new database();
 // var_dump($_POST);
 // echo '</pre>';
 
-$arr = array(
-    'name' => $_POST["name"],
-    'sku' => $_POST["sku"],
-    'category' => $_POST["category"],
-    'price' => $_POST["price"],
-    'quantity' => $_POST["quantity"],
-);
-
-$obj->insert('products', $arr);
 
 
-// header('Location: ' . $_SERVER['HTTP_REFERER']);
+if (empty($_POST['product_id'])) {
+    $arr = array(
+        'name' => $_POST["name"],
+        'sku' => $_POST["sku"],
+        'category' => $_POST["category"],
+        'gallon_price' => $_POST["gallon_price"],
+        'gallon_quantity' => $_POST["gallon_quantity"],
+        'quarter_price' => $_POST["quarter_price"],
+        'quarter_quantity' => $_POST["quarter_quantity"],
+        'dabbi_price' => $_POST["dabbi_price"],
+        'dabbi_quantity' => $_POST["dabbi_quantity"],
+    );
+    
+    $obj->insert('products', $arr);
+    
+}else{
+    $arr = array(
+        'id' => $_POST["product_id"],
+        'name' => $_POST["name"],
+        'sku' => $_POST["sku"],
+        'category' => $_POST["category"],
+        'gallon_price' => $_POST["gallon_price"],
+        'gallon_quantity' => $_POST["gallon_quantity"],
+        'quarter_price' => $_POST["quarter_price"],
+        'quarter_quantity' => $_POST["quarter_quantity"],
+        'dabbi_price' => $_POST["dabbi_price"],
+        'dabbi_quantity' => $_POST["dabbi_quantity"],
+    );
+
+    $res = $obj->update('products', $arr, 'id',$_POST["product_id"]);
+
+}
 
 ?>
 

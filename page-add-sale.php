@@ -16,6 +16,25 @@ $customers = $obj->get_data('customers');
 
 // $product = $obj->one_row('products', 'categories', 'category', 'category_id', $id);
 
+function createRandomPassword() {
+	$chars = "003232303232023232023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+	while ($i <= 7) {
+
+		$num = rand() % 33;
+
+		$tmp = substr($chars, $num, 1);
+
+		$pass = $pass . $tmp;
+
+		$i++;
+
+	}
+	return $pass;
+}
+$invoice_code = createRandomPassword();
 
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
@@ -35,29 +54,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="" data-toggle="validator" id="invoice_form">
+                            <form action="invoice_print.php" data-toggle="validator" id="invoice_form">
                                 <div class="row d-flex">
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Date *</label>
-                                            <input type="text" class="form-control" placeholder="Date">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Reference No *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Reference No" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Biller *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
-                                                <option>Test Biller</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
+                                
+                                    <input type="text" name="invoice" value="<?php echo $invoice_code; ?>" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customers</label>
@@ -84,7 +84,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                         </div>
                                     </div>
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Product</label>
                                             <select name="product" class="selectpicker form-control" data-style="py-0" id="product_select">
@@ -96,10 +96,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Qty</label>
-                                            <input type="number" name="qty" class="form-control" placeholder="Date">
+                                            <label>Quantity</label>
+                                            <select name="qty" class="selectpicker form-control" data-style="py-0" id="product_select">
+                                                    
+                                                <?php /* foreach ($products as $product) : ?>
+                                                    <option value="<?php echo $product['id']; ?>"><?php echo $product['name']; ?> </option>
+                                                <?php endforeach; */  ?>
+
+                                                <option value="gallon">Gallon</option>
+                                                <option value="quarter">Quarter</option>
+                                                <option value="dabbi">Dabbi</option>
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Pcs</label>
+                                            <input type="number" name="pcs" class="form-control" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -113,36 +131,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                             <table class="table ">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center" scope="col">#</th>
+                                                        <th class="text-center" scope="col">Delete</th>
+                                                        <!-- <th class="text-center" scope="col">#</th> -->
                                                         <th scope="col">Item</th>
                                                         <th class="text-center" scope="col">Quantity</th>
+                                                        <th class="text-center" scope="col">Pcs</th>
                                                         <th class="text-center" scope="col">Price</th>
                                                         <th class="text-center" scope="col">Totals</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="invoice_table_body">
-                                                    <!-- <tr>
-                                                        <th class="text-center" scope="row">1</th>
-                                                        <td class="text-center">Blue Paint</td>
-                                                        <td class="text-center">5</td>
-                                                        <td class="text-center">$120.00</td>
-                                                        <td class="text-center"><b>$2,880.00</b></td>
-                                                    </tr> -->
+                                                   
                                                     
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr>
-                                                        <td colspan="4" align="right">Grand Total</td>
+                                                    <!-- <tr>
+                                                        <td colspan="5" align="right">Grand Total</td>
                                                         <td class="text-center grandTotal"></td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tfoot>
                                             </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 ml-auto">
+                                        <div class="form-group">
+                                            <label>Amount Recieved</label>
+                                            <input type="number" name="amount_recieved" class="form-control" placeholder="Amount Recieved">
                                         </div>
                                     </div>
 
                                     
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-5">Create Invoice</button>
+                                <!-- <a href="invoice_print.php?id=<?php //echo $invoice_code; ?>&amount=<?php //echo $GET['amount_recieved']; ?>" class="btn btn-primary mt-5" target="_blank">Create Invoice</a> -->
                                 <!-- <button type="reset" class="btn btn-danger">Reset</button> -->
                             </form>
                         </div>

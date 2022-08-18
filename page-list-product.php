@@ -72,8 +72,13 @@
                                 
                                 <td>
                                     <div class="d-flex align-items-center list-action">
-                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="page-edit-product.php?id=<?php echo $product['id']; ?>"><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $product['id']; ?>" data-table="products" data-col="id" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        <a class="badge bg-success mr-2 edit_product" data-id="<?php echo $product['id']; ?>" data-table="products" href="#" data-toggle="modal" data-target="#form">
+                                            <i class="ri-pencil-line mr-0"></i>
+                                        </a>
+
+                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $product['id']; ?>" data-table="products" data-col="id" data-placement="top" title="" data-original-title="Delete" href="#">
+                                            <i class="ri-delete-bin-line mr-0"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -142,15 +147,16 @@
                     <div class="row px-10 mx-10">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <input type="text" class="form-control" name="product_id" id="product_id" hidden>
                                 <label>Name *</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="name" required>
+                                <input type="text" class="form-control" placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="name" id="product_name" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>SKU *</label>
-                                <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." name="sku" required>
+                                <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." name="sku" id="sku" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -171,14 +177,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Gallon Price *</label>
-                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="gallon_price" >
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="gallon_price" id="gallon_price" >
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Gallon Quantity *</label>
-                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="gallon_price">
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="gallon_quantity" id="gallon_quantity">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -186,14 +192,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Quarter Price *</label>
-                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="quarter_price" >
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="quarter_price" id="quarter_price" >
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Quarter Quantity *</label>
-                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="quarter_quantity">
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="quarter_quantity" id="quarter_quantity">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -201,14 +207,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Dabbi Price *</label>
-                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="dabbi_price" >
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="dabbi_price" id="dabbi_price">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Dabbi Quantity *</label>
-                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="dabbi_quantity">
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="dabbi_quantity" id="dabbi_quantity">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

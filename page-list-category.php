@@ -52,8 +52,13 @@
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center list-action">
-                                        <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href=""><i class="ri-pencil-line mr-0"></i></a>
-                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $value['category_id']; ?>" data-table="categories" data-col="category_id" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        <a class="badge bg-success mr-2 edit_category" data-id="<?php echo $value['category_id']; ?>" data-table="categories" data-col="category_id" href="#" data-toggle="modal" data-target="#form">
+                                            <i class="ri-pencil-line mr-0"></i>
+                                        </a>
+                                        
+                                        <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $value['category_id']; ?>" data-table="categories" data-col="category_id" data-placement="top" title="" data-original-title="Delete" href="#">
+                                            <i class="ri-delete-bin-line mr-0"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -87,7 +92,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Name *</label>
-                                <input type="text" class="form-control" placeholder="Enter Category Name" data-errors="Please Enter Catgeory Name." name="name" required>
+                                <input type="text" class="form-control" placeholder="Enter Category Id" data-errors="Please Enter Catgeory ID" name="category_id" id="category_id" hidden>
+                                <input type="text" class="form-control" placeholder="Enter Category Name" data-errors="Please Enter Catgeory Name." name="name" id="category_name" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

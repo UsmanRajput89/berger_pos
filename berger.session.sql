@@ -1,8 +1,7 @@
-CREATE TABLE customer (
-    customer_id int(11) NOT NULL AUTO_INCREMENT,
-    customer_name varchar(120),
-    customer_phone int(50),
-    customer_address VARCHAR(150),
-    customer_city VARCHAR(50),
-    PRIMARY KEY (customer_id)
+CREATE TABLE sales (
+    sale_id int(22) NOT NULL AUTO_INCREMENT,
+    customer_id int(11),
+    invoice_amount VARCHAR(50),
+    amount_recieved VARCHAR(50),
+    PRIMARY KEY (sale_id)
 );

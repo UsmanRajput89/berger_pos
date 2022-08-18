@@ -5,7 +5,11 @@ include "includes/contants.php";
 // $id = $_GET['id'];
 $obj = new database();
 
-$categories = $obj->get_data('categories');
+$sales = $obj->get_data('sales');
+
+// echo '<pre>';
+// var_dump($sales);
+// echo '</pre>';
 
 // $product = $obj->one_row('products', 'categories', 'category', 'category_id', $id);
 
@@ -23,9 +27,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">Sale List</h4>
-                            <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them
-                                in one central<br> place while helping teams to reach sales goals. </p>
+                            <h4 >Sale List</h4>
+                            <!-- <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them -->
+                                <!-- in one central<br> place while helping teams to reach sales goals. </p> -->
                         </div>
                         <a href="page-add-sale.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
                     </div>
@@ -38,34 +42,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     
                                     <th>Date</th>
                                     <th>Customer</th>
-                                    <th>Amount</th>
-                                    <!-- <th>Paid</th> -->
+                                    <th>Invoice</th>
+                                    <th>Total Amount</th>
+                                    <th>Recieved</th>
                                     <!-- <th>Status</th> -->
                                     <!-- <th>Biller</th> -->
-                                    <th>Tax</th>
-                                    <th>Action</th>
+                                    <!-- <th>Tax</th> -->
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
-                                <tr>
-                                    
-                                    <td>01 jan 2020</td>
-                                    <td>Bill Yerds</td>
-                                    <td>38.50</td>
-                                    <!-- <td>
-                                        <div class="badge badge-success">Paid</div>
-                                    </td> -->
-                                    <!-- <td>Yerds</td> -->
-                                    <td>1.3</td>
-                                    <td>
-                                        <div class="d-flex align-items-center list-action">
-                                            <!-- <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View" href="#"><i class="ri-eye-line mr-0"></i></a> -->
-                                            <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                            <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
                                 
+                                <?php foreach ($sales as $sale) :?>
+                                    <tr>
+                                        <td><?php echo $sale['date']; ?></td>
+                                        <td><?php echo $sale['customer_id']; ?></td>
+                                        <td><?php echo $sale['invoice_number']; ?></td>
+                                        <td><?php echo $sale['invoice_amount']; ?></td>
+                                        <td><?php echo $sale['amount_recieved']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                    
                             </tbody>
                         </table>
                     </div>
