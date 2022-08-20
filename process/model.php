@@ -141,6 +141,19 @@ class database{
 
         return $array;
     }
+    public function new_query($query){
+        // $array = array();
+        // $query = "SELECT * FROM $table WHERE $col='$id'";
+        
+        $result = $this->mysqli->query($query);
+        
+        // while($row = mysqli_fetch_assoc($result))  
+        // {  
+            // $array[] = $row;  
+        // }  
+
+        // return $array;
+    }
 
 
 

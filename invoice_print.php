@@ -22,6 +22,59 @@
 
     // $words = numberTowords(1000);
     // echo $words;
+
+    function quantity_in_out($val){
+        // echo '<pre>';
+        // var_dump($val);
+        // echo '</pre>';
+
+        $product_id = $val['product_id']; 
+        $product_quan = $val['product_quantity']; 
+        $product_pcs = $val['pcs']; 
+
+
+        switch ($product_quan) {
+            case 'quarter':
+                $obj = new database();
+                $old_quan_query = "SELECT gallon_quantity FROM products WHERE id = $product_id ";
+                $old_quan = $obj->custom_query($old_quan_query);
+
+                $old_quan = $old_quan[0]['gallon_quantity'];
+                $new_quan = $old_quan - $product_pcs;
+
+                $up_query = "UPDATE products SET gallon_quantity = '$new_quan' WHERE id=$product_id";
+                $obj->new_query($up_query);
+
+                break;
+            case 'quarter':
+                $obj = new database();
+                $old_quan_query = "SELECT quarter_quantity FROM products WHERE id = $product_id ";
+                $old_quan = $obj->custom_query($old_quan_query);
+
+                $old_quan = $old_quan[0]['quarter_quantity'];
+                $new_quan = $old_quan - $product_pcs;
+
+                $up_query = "UPDATE products SET quarter_quantity = '$new_quan' WHERE id=$product_id";
+                $obj->new_query($up_query);
+
+                break;
+            case 'dabbi':
+                $obj = new database();
+                $old_quan_query = "SELECT dabbi_quantity FROM products WHERE id = $product_id ";
+                $old_quan = $obj->custom_query($old_quan_query);
+
+                $old_quan = $old_quan[0]['dabbi_quantity'];
+                $new_quan = $old_quan - $product_pcs;
+
+                $up_query = "UPDATE products SET dabbi_quantity = '$new_quan' WHERE id=$product_id";
+                $obj->new_query($up_query);
+
+                break;
+        
+        }
+
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -109,11 +162,24 @@
                                 <?php $total = 0; $pcs=0;?>
                                 
                                 <?php foreach ($invoice_items as $val) :?>
+
+
+
+                                    <?php 
+                                        
+                                        quantity_in_out($val);    
+                                        
+                                    ?>
+                                    
                                     <tr>
                                         <td class="left strong">
                                             <?php 
                                                 $res = $obj->select_data('products', 'name', $val['product_id']);
                                                 echo $res['name']; 
+
+
+
+
                                             ?>
                                         </td>
                                         <!-- <td class="left"><?php  ?></td> -->
@@ -157,24 +223,24 @@
                                     </tr>
                                     <tr>
                                         <td class="left">
-                                            <strong>Discount (0%)</strong>
+                                            <strong>Recieved </strong>
                                         </td>
-                                        <td class="right">0</td>
+                                        <td class="right"><?php echo $recieved; ?></td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="left">
                                             <strong>VAT (0%)</strong>
                                         </td>
                                         <td class="right">0</td>
-                                    </tr>
+                                    </tr>-->
                                     <tr>
                                         <td class="left">
-                                            <strong>Total</strong>
+                                            <strong>Remaining </strong>
                                         </td>
                                         <td class="right">
-                                            <strong><?php echo $total; ?></strong>
+                                            <strong><?php echo $total - $recieved; ?></strong>
                                         </td>
-                                    </tr>
+                                    </tr> 
                                 </tbody>
                             </table>
 
@@ -187,7 +253,22 @@
             </div>
         </div>
 
+        <?php 
+            $date = date("d-m-Y");
 
+            $insert_sale = array(
+                'customer_id' => $customer_id ,
+                'invoice_number' => $invoice ,
+                'invoice_amount' => $total ,
+                'amount_recieved' =>  $recieved,
+                'date' => $date,
+            );
+
+            $obj->insert('sales', $insert_sale); 
+        
+        ?>
+        
+        <?php /* ?>
         <?php 
 
             $date = date("d-m-Y");
@@ -200,7 +281,7 @@
                 'date' => $date,
             );
 
-            $obj->insert('sales', $insert_sale); 
+            // $obj->insert('sales', $insert_sale); 
 
             $query="SELECT * FROM SALES WHERE customer_id = $customer_id";
             $ledger = $obj->custom_query($query);
@@ -211,7 +292,9 @@
             $customer_det = $obj->custom_query($query);
             
         ?>
-    <hr>
+        <hr>
+
+    
         <div class="container mt-4" >
             <h4>General Ledger</h4>
             <h5> <strong> <?php echo $customer_det[0]['customer_name']; ?></strong></h5>
@@ -242,6 +325,8 @@
 
         </div>
 
+        <?php */ ?>
+        
     </body>
 
 </html>

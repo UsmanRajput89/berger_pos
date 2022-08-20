@@ -59,7 +59,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     <td><?php echo $customer['customer_city'];  ?></td>
                                     <td>
                                         <div class="d-flex align-items-center list-action">
+                                            <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ledger" href="customer_ledger.php?id=<?php echo $customer['customer_id']; ?>" target="_blank"><i class="ri-eye-line mr-0"></i></a>
+
                                             <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href=""><i class="ri-pencil-line mr-0"></i></a>
+
                                             <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $customer['customer_id']; ?>" data-table="customers" data-col="customer_id" data-placement="top" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
                                         </div>
                                     </td>
