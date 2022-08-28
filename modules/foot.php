@@ -35,11 +35,13 @@
 <!-- Chart Custom JavaScript -->
 <!-- <script async src="assets/js/chart-custom.js"></script> -->
 
-<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.min.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script> -->
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"/> -->
 
 <!-- app JavaScript -->
+<script src="assets/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/buttons.print.min.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/custom.js"></script>
 </body>

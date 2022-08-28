@@ -27,11 +27,16 @@ switch ($qty) {
         $product['price'] = $product['quarter_price'];
         break;
 
-    case 'dabbi':
-        
+    case 'dabbi':   
         $total = number_format($product['dabbi_price'], 2, '.', '') * $pcs;
         $product['qty'] = 'Dabbi';
         $product['price'] = $product['dabbi_price'];
+        break;
+
+    case 'drumi':   
+        $total = number_format($product['drumi_price'], 2, '.', '') * $pcs;
+        $product['qty'] = 'Drumi';
+        $product['price'] = $product['drumi_price'];
         break;
     
 }

@@ -20,6 +20,8 @@ if (empty($_POST['product_id'])) {
         'quarter_quantity' => $_POST["quarter_quantity"],
         'dabbi_price' => $_POST["dabbi_price"],
         'dabbi_quantity' => $_POST["dabbi_quantity"],
+        'drumi_price' => $_POST["drumi_price"],
+        'drumi_quantity' => $_POST["drumi_quantity"],
     );
     
     $obj->insert('products', $arr);
@@ -36,6 +38,8 @@ if (empty($_POST['product_id'])) {
         'quarter_quantity' => $_POST["quarter_quantity"],
         'dabbi_price' => $_POST["dabbi_price"],
         'dabbi_quantity' => $_POST["dabbi_quantity"],
+        'drumi_price' => $_POST["drumi_price"],
+        'drumi_quantity' => $_POST["drumi_quantity"],
     );
 
     $res = $obj->update('products', $arr, 'id',$_POST["product_id"]);

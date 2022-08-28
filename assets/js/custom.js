@@ -49,6 +49,8 @@ $(document).ready(function () {
                 $("#quarter_quantity").val(response.quarter_quantity);
                 $("#dabbi_price").val(response.dabbi_price);
                 $("#dabbi_quantity").val(response.dabbi_quantity);
+                $("#drumi_price").val(response.drumi_price);
+                $("#drumi_quantity").val(response.drumi_quantity);
             }
         });
 

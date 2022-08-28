@@ -375,7 +375,19 @@ Index Of Script
 
 
     if ($.fn.DataTable) {
-        $(".data-table").DataTable();
+        $(".data-table").DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'print',
+                    // autoPrint: false,
+                    // columns: [ 0,1,2,3 ]
+                    customize: function ( win ) {
+                        $(win.document.body).find( '>h1' ).addClass( 'display' ).css('display', 'none');
+                    }
+                }
+            ]
+        });
     }
 
     /*---------------------------------------------------------------------
@@ -657,7 +669,7 @@ Index Of Script
     });
 
     $("body").on("submit", "#customer_form", function (e) {
-        // e.preventDefault();
+        e.preventDefault();
 
         let myform = $(this)[0];
         let fd = new FormData(myform);

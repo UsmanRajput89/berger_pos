@@ -49,6 +49,8 @@
                                 <th>Quarter Quantity</th>
                                 <th>Dabbi Price</th>
                                 <th>Dabbi Quantity</th>
+                                <th>Drumi Price</th>
+                                <th>Drumi Quantity</th>
                                 
                                 <th>Action</th>
                             </tr>
@@ -69,6 +71,8 @@
                                 <td><?php echo $product['quarter_quantity']; ?></td>
                                 <td><?php echo $product['dabbi_price']; ?></td>
                                 <td><?php echo $product['dabbi_quantity']; ?></td>
+                                <td><?php echo $product['drumi_price']; ?></td>
+                                <td><?php echo $product['drumi_quantity']; ?></td>
                                 
                                 <td>
                                     <div class="d-flex align-items-center list-action">
@@ -218,12 +222,27 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Drumi Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="drumi_price" id="drumi_price">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Drumi Quantity *</label>
+                                <input type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." name="drumi_quantity" id="drumi_quantity">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
                         
                        
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <!-- <button type="reset" class="btn btn-danger">Reset</button> -->
                 </form>
             </div>
         </div>

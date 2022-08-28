@@ -109,6 +109,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                                 <option value="gallon">Gallon</option>
                                                 <option value="quarter">Quarter</option>
                                                 <option value="dabbi">Dabbi</option>
+                                                <option value="drumi">Drumi</option>
                                             
                                             </select>
                                         </div>
