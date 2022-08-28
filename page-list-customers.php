@@ -9,13 +9,12 @@ $customers = $obj->get_data('customers');
 
 // $product = $obj->one_row('products', 'categories', 'category', 'category_id', $id);
 
-
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
+if (isset($_SESSION['id']) && isset($_SESSION['username'])):
 
 ?>
 
-    <?php include 'modules/head.php'; ?>
+    <?php include 'modules/head.php';?>
     <div class="content-page">
         <div class="container-fluid">
             <div class="row">
@@ -30,7 +29,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form">
                             Add Customer
-                        </button> 
+                        </button>
                     </div>
                 </div>
 
@@ -51,24 +50,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
-                                <?php foreach ($customers as $customer) : ?>
+                                <?php foreach ($customers as $customer): ?>
                                 <tr>
-                                    <td> <?php echo $customer['customer_name'];  ?></td>
-                                    <td><?php echo $customer['customer_phone'];  ?></td>
-                                    <td><?php echo $customer['customer_address'];  ?></td>
-                                    <td><?php echo $customer['customer_city'];  ?></td>
+                                    <td> <?php echo $customer['customer_name']; ?></td>
+                                    <td><?php echo $customer['customer_phone']; ?></td>
+                                    <td><?php echo $customer['customer_address']; ?></td>
+                                    <td><?php echo $customer['customer_city']; ?></td>
                                     <td>
                                         <div class="d-flex align-items-center list-action">
-                                            <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ledger" href="customer_ledger.php?id=<?php echo $customer['customer_id']; ?>" target="_blank"><i class="ri-eye-line mr-0"></i></a>
+                                            <a class="badge badge-info mr-2 " data-toggle="tooltip" data-placement="top" title="" data-original-title="Ledger" href="customer_ledger.php?id=<?php echo $customer['customer_id']; ?>" target="_blank"><i class="ri-eye-line mr-0"></i></a>
 
-                                            <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href=""><i class="ri-pencil-line mr-0"></i></a>
+                                            <a class="badge bg-success mr-2 edit_customer" data-toggle="modal" data-target="#form" data-id="<?php echo $customer['customer_id']; ?>" data-original-title="Edit" href=""><i class="ri-pencil-line mr-0"></i></a>
 
                                             <a class="badge bg-warning mr-2 delete" data-toggle="tooltip" data-id="<?php echo $customer['customer_id']; ?>" data-table="customers" data-col="customer_id" data-placement="top" data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php endforeach; ?>
-                                
+                                <?php endforeach;?>
+
                             </tbody>
                         </table>
                     </div>
@@ -90,48 +89,49 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                     <form action="#" method="POST" data-toggle="validator" id="customer_form">
                         <div class="row">
                             <div class="col-md-6">
+                                <input name="customer_id" type="text" id="customer_id" val="" >
                                 <div class="form-group">
                                     <label>Name *</label>
-                                    <input name="name" type="text" class="form-control" placeholder="Enter Name" required>
+                                    <input name="name" type="text" class="form-control" placeholder="Enter Name" id="customer_name" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Phone Number *</label>
-                                    <input type="text" class="form-control" placeholder="Enter Phone Number" name="number" required>
+                                    <input type="text" class="form-control" placeholder="Enter Phone Number" id="customer_phone" name="customer_phone" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <textarea class="form-control" name="address" rows="4"></textarea>
+                                    <textarea class="form-control" name="address" id="customer_address" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>City *</label>
-                                    <input type="text" class="form-control" name="city"  placeholder="Enter City" required>
+                                    <input type="text" class="form-control" name="city"  placeholder="Enter City" id="customer_city" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Add Customer</button>
                         <button type="reset" class="btn btn-danger">Reset</button>
-            </form>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <?php include 'modules/foot.php'; ?>
+    <?php include 'modules/foot.php';?>
 
 
 <?php
-else :
+else:
     header("Location: index.php");
     exit();
 endif;

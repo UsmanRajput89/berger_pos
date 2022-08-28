@@ -43,13 +43,13 @@
                                 <th>Product</th>
                                 <th>Code</th>
                                 <th>Category</th>
-                                <th>Gallon Price</th>
+                                <!-- <th>Gallon Price</th> -->
                                 <th>Gallon Quantity</th>
-                                <th>Quarter Price</th>
+                                <!-- <th>Quarter Price</th> -->
                                 <th>Quarter Quantity</th>
-                                <th>Dabbi Price</th>
+                                <!-- <th>Dabbi Price</th> -->
                                 <th>Dabbi Quantity</th>
-                                <th>Drumi Price</th>
+                                <!-- <th>Drumi Price</th> -->
                                 <th>Drumi Quantity</th>
                                 
                                 <th>Action</th>
@@ -65,13 +65,13 @@
                                 <td><?php echo $product['name']; ?></td>
                                 <td><?php echo $product['sku']; ?></td>
                                 <td><?php echo $product['category_name']; ?></td>
-                                <td><?php echo $product['gallon_price']; ?></td>
+                                <!-- <td><?php //echo $product['gallon_price']; ?></td> -->
                                 <td><?php echo $product['gallon_quantity']; ?></td>
-                                <td><?php echo $product['quarter_price']; ?></td>
+                                <!-- <td><?php //echo $product['quarter_price']; ?></td> -->
                                 <td><?php echo $product['quarter_quantity']; ?></td>
-                                <td><?php echo $product['dabbi_price']; ?></td>
+                                <!-- <td><?php //echo $product['dabbi_price']; ?></td> -->
                                 <td><?php echo $product['dabbi_quantity']; ?></td>
-                                <td><?php echo $product['drumi_price']; ?></td>
+                                <!-- <td><?php //echo $product['drumi_price']; ?></td> -->
                                 <td><?php echo $product['drumi_quantity']; ?></td>
                                 
                                 <td>
@@ -178,13 +178,13 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Gallon Price *</label>
                                 <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="gallon_price" id="gallon_price" >
                                 <div class="help-block with-errors"></div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Gallon Quantity *</label>
@@ -193,13 +193,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Quarter Price *</label>
                                 <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="quarter_price" id="quarter_price" >
                                 <div class="help-block with-errors"></div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Quarter Quantity *</label>
@@ -208,13 +208,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Dabbi Price *</label>
                                 <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="dabbi_price" id="dabbi_price">
                                 <div class="help-block with-errors"></div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Dabbi Quantity *</label>
@@ -223,13 +223,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Drumi Price *</label>
                                 <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="drumi_price" id="drumi_price">
                                 <div class="help-block with-errors"></div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Drumi Quantity *</label>

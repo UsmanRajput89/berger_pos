@@ -35,6 +35,10 @@
                             <tr class="ligth ligth-data">
                                 <th>Sr #</th>
                                 <th>Category Name</th>
+                                <th>Drmi Price</th>
+                                <th>Quarter Price</th>
+                                <th>Gallon Price</th>
+                                <th>Dabbi Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -48,8 +52,11 @@
                                 </td>
                                 <td>
                                     <?php echo $value['category_name']; ?>
-                                    
                                 </td>
+                                <td><?php echo $value['drumi_price']; ?></td>
+                                <td><?php echo $value['quarter_price']; ?></td>
+                                <td><?php echo $value['gallon_price']; ?></td>
+                                <td><?php echo $value['dabbi_price']; ?></td>
                                 <td>
                                     <div class="d-flex align-items-center list-action">
                                         <a class="badge bg-success mr-2 edit_category" data-id="<?php echo $value['category_id']; ?>" data-table="categories" data-col="category_id" href="#" data-toggle="modal" data-target="#form">
@@ -94,6 +101,38 @@
                                 <label>Name *</label>
                                 <input type="text" class="form-control" placeholder="Enter Category Id" data-errors="Please Enter Catgeory ID" name="category_id" id="category_id" hidden>
                                 <input type="text" class="form-control" placeholder="Enter Category Name" data-errors="Please Enter Catgeory Name." name="name" id="category_name" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Drumi Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="drumi_price" id="drumi_price">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quarter Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="quarter_price" id="quarter_price" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gallon Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="gallon_price" id="gallon_price" >
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Dabbi Price *</label>
+                                <input type="text" class="form-control" placeholder="Enter Price" data-errors="Please Enter Price." name="dabbi_price" id="dabbi_price">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

@@ -684,7 +684,7 @@ Index Of Script
             dataType: 'JSON',
             success: function (response) {
                 console.log(response);
-                window.location.reload(true);
+                // window.location.reload(true);
             }
         });
 
@@ -694,32 +694,3 @@ Index Of Script
 })(jQuery);
 
 
-// $("body").on("change", "#category", function () {
-//     console.log('Working');
-
-//     let myform = $("#invoice_form")[0];
-//     let fd = new FormData(myform);
-
-//     load_data('products', fd);
-
-// });
-
-// function load_data(table, form) {
-//     $.ajax({
-//         url: "process/get_products_same_cat.php",
-//         data: form,
-//         cache: false,
-//         processData: false,
-//         contentType: false,
-//         type: 'POST',
-//         dataType: 'JSON',
-//         success: function (response) {
-//             // console.log(response);
-//             response.forEach(element => {
-//                 // console.log(element.name);
-//                 let elem = `<option value="${element.id}">${element.name}</option>`;
-//                 // $("#product_select").append(elem);
-//             });
-//         }
-//     });
-// }

@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                 <div class="row d-flex">
                                 
                                     <input type="text" name="invoice" value="<?php echo $invoice_code; ?>" hidden>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Customers</label>
                                             <select name="customers" class="selectpicker form-control" id="customers" data-style="py-0">
@@ -84,14 +84,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
+                                    <div class="col-md-3">
+                                        <div class="form-group cus">
                                             <label>Product</label>
-                                            <select name="product" class="selectpicker form-control" data-style="py-0" id="product_select">
+                                            <select name="product" class="product_options " data-style="py-0" id="products" >
                                                     
-                                                <?php foreach ($products as $product) : ?>
+                                                <?php /* foreach ($products as $product) : ?>
                                                     <option value="<?php echo $product['id']; ?>"><?php echo $product['name']; ?> </option>
-                                                <?php endforeach;  ?>
+                                                <?php endforeach; */ ?>
+                                                <!-- <option value="0">Nothing</option> -->
                                             
                                             </select>
                                         </div>
@@ -102,25 +103,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                             <label>Quantity</label>
                                             <select name="qty" class="selectpicker form-control" data-style="py-0" id="product_select">
                                                     
-                                                <?php /* foreach ($products as $product) : ?>
-                                                    <option value="<?php echo $product['id']; ?>"><?php echo $product['name']; ?> </option>
-                                                <?php endforeach; */  ?>
-
-                                                <option value="gallon">Gallon</option>
-                                                <option value="quarter">Quarter</option>
-                                                <option value="dabbi">Dabbi</option>
-                                                <option value="drumi">Drumi</option>
+                                                <option value="Gallon">Gallon</option>
+                                                <option value="Quarter">Quarter</option>
+                                                <option value="Dabbi">Dabbi</option>
+                                                <option value="Drumi">Drumi</option>
                                             
                                             </select>
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Pcs</label>
                                             <input type="number" name="pcs" class="form-control" placeholder="">
                                         </div>
                                     </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Discount</label>
+                                            <input type="number" name="discount" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    
+                                    
+
                                     <div class="col-md-2">
                                         <!-- <div class="form-group"> -->
                                             <!-- <button type="submit" class="btn btn-primary mt-5">Add Sale</button> -->
@@ -142,7 +148,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                                     </tr>
                                                 </thead>
                                                 <tbody class="invoice_table_body">
-                                                   
+                                                    
                                                     
                                                 </tbody>
                                                 <tfoot>
@@ -158,10 +164,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     <div class="col-md-3 ml-auto">
                                         <div class="form-group">
                                             <label>Amount Recieved</label>
-                                            <input type="number" name="amount_recieved" class="form-control" placeholder="Amount Recieved">
+                                            <input type="number" name="amount_recieved" class="form-control" placeholder="Amount Recieved" value="0">
                                         </div>
                                     </div>
-
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Builty#</label>
+                                            <input type="number" name="builty" class="form-control" val="00000">
+                                        </div>
+                                    </div>
                                     
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-5">Create Invoice</button>

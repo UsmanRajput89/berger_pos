@@ -13,30 +13,31 @@ $pcs = $_POST['pcs'];
 
 $product = $obj->select_row_table('products', 'id', $_POST['product']);
 
+$category = $obj->select_row_table('categories', 'category_id', $_POST['category']);
 
 switch ($qty) {
-    case 'gallon':
-        $total = number_format($product['gallon_price'], 2, '.', '') * $pcs;
+    case 'Gallon':
+        $total = number_format($category['gallon_price'], 2, '.', '') * $pcs;
         $product['qty'] = 'Gallon';
-        $product['price'] = $product['gallon_price'];
+        $product['price'] = $category['gallon_price'];
         break;
     
-    case 'quarter':
-        $total = number_format($product['quarter_price'], 2, '.', '') * $pcs;
+    case 'Quarter':
+        $total = number_format($category['quarter_price'], 2, '.', '') * $pcs;
         $product['qty'] = 'Quarter';
-        $product['price'] = $product['quarter_price'];
+        $product['price'] = $category['quarter_price'];
         break;
 
-    case 'dabbi':   
-        $total = number_format($product['dabbi_price'], 2, '.', '') * $pcs;
+    case 'Dabbi':   
+        $total = number_format($category['dabbi_price'], 2, '.', '') * $pcs;
         $product['qty'] = 'Dabbi';
-        $product['price'] = $product['dabbi_price'];
+        $product['price'] = $category['dabbi_price'];
         break;
 
-    case 'drumi':   
-        $total = number_format($product['drumi_price'], 2, '.', '') * $pcs;
+    case 'Drumi':   
+        $total = number_format($category['drumi_price'], 2, '.', '') * $pcs;
         $product['qty'] = 'Drumi';
-        $product['price'] = $product['drumi_price'];
+        $product['price'] = $category['drumi_price'];
         break;
     
 }

@@ -29241,4 +29241,11 @@ i {
 .modal-content form{
     padding: 20px;
 }
+
+.cus select{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
 /*# sourceMappingURL=maps/backend.css.map */
