@@ -89,7 +89,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])):
                     <form action="#" method="POST" data-toggle="validator" id="customer_form">
                         <div class="row">
                             <div class="col-md-6">
-                                <input name="customer_id" type="text" id="customer_id" val="" >
+                                <input name="customer_id" type="text" id="customer_id" value=""  hidden>
                                 <div class="form-group">
                                     <label>Name *</label>
                                     <input name="name" type="text" class="form-control" placeholder="Enter Name" id="customer_name" required>

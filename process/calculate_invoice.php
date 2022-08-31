@@ -6,6 +6,10 @@ $obj = new database();
 $qty = $_POST['qty'];
 $pcs = $_POST['pcs'];
 
+$discount_percent = $_POST['discount'];
+
+
+
 // echo '<pre>';
 // var_dump($_POST);
 // echo '</pre>';
@@ -15,34 +19,65 @@ $product = $obj->select_row_table('products', 'id', $_POST['product']);
 
 $category = $obj->select_row_table('categories', 'category_id', $_POST['category']);
 
+
+
 switch ($qty) {
     case 'Gallon':
-        $total = number_format($category['gallon_price'], 2, '.', '') * $pcs;
+        $item_price = number_format($category['gallon_price'], 2, '.', '');
+        $discount = ($item_price/100)*($discount_percent);
+        $discounted_price = $item_price - $discount;
+        
+        $total = $discounted_price * $pcs;
         $product['qty'] = 'Gallon';
         $product['price'] = $category['gallon_price'];
-        break;
+    break;
     
     case 'Quarter':
         $total = number_format($category['quarter_price'], 2, '.', '') * $pcs;
+        $item_price = number_format($category['quarter_price'], 2, '.', '');
+        $discount = ($item_price/100)*($discount_percent);
+        $discounted_price = $item_price - $discount;
+
+        $total = $discounted_price * $pcs;
         $product['qty'] = 'Quarter';
         $product['price'] = $category['quarter_price'];
-        break;
+    break;
 
     case 'Dabbi':   
+        
         $total = number_format($category['dabbi_price'], 2, '.', '') * $pcs;
+        $item_price = number_format($category['dabbi_price'], 2, '.', '');
+        $discount = ($item_price/100)*($discount_percent);
+        $discounted_price = $item_price - $discount;
+
+        $total = $discounted_price * $pcs;
         $product['qty'] = 'Dabbi';
         $product['price'] = $category['dabbi_price'];
-        break;
+    break;
 
-    case 'Drumi':   
+    case 'Drumi':
         $total = number_format($category['drumi_price'], 2, '.', '') * $pcs;
+        $item_price = number_format($category['drumi_price'], 2, '.', '');
+        $discount = ($item_price/100)*($discount_percent);
+        $discounted_price = $item_price - $discount;
+
+        $total = $discounted_price * $pcs;   
         $product['qty'] = 'Drumi';
         $product['price'] = $category['drumi_price'];
-        break;
-    
+    break;
+
 }
 
+
+
+
 $total = number_format($total, 2, '.', '');
+
+
+
+$product['price'] = $item_price;
+$product['discounted_price'] = $discounted_price;
+$product['discount_percent'] = $discount_percent;
 
 $product['pcs'] = $_POST['pcs'];
 $product['total'] = $total;
@@ -56,12 +91,17 @@ $insert_Array = array(
     'product_id' => $_POST['product'],
     'product_quantity' => $_POST['qty'],
     'pcs' => $product['pcs'],
+    'p_per_item' => $item_price,
+    'discount_percent' => $discount_percent,
+    'discounted_price' => $discounted_price,
     'total' => $total,
 );
 
-
 $obj->insert('invoices', $insert_Array);
 
+// $product_single_array = array(
+
+// );
 
 $encoded = json_encode($product);
 echo $encoded;

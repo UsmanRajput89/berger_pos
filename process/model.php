@@ -141,6 +141,7 @@ class database{
 
         return $array;
     }
+    
     public function new_query($query){
         
         $result = $this->mysqli->query($query);

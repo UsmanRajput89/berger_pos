@@ -115,13 +115,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Pcs</label>
-                                            <input type="number" name="pcs" class="form-control" placeholder="">
+                                            <input type="number" name="pcs" class="form-control" placeholder="" value="0">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Discount</label>
-                                            <input type="number" name="discount" class="form-control" placeholder="">
+                                            <input type="text" name="discount" class="form-control" value="0">
                                         </div>
                                     </div>
                                     
@@ -144,6 +144,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                                         <th class="text-center" scope="col">Quantity</th>
                                                         <th class="text-center" scope="col">Pcs</th>
                                                         <th class="text-center" scope="col">Price</th>
+                                                        <th class="text-center" scope="col">Dsicount %</th>
+                                                        <th class="text-center" scope="col">Rate</th>
                                                         <th class="text-center" scope="col">Totals</th>
                                                     </tr>
                                                 </thead>
@@ -170,7 +172,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) :
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Builty#</label>
-                                            <input type="number" name="builty" class="form-control" val="00000">
+                                            <input type="number" name="builty" class="form-control" value="00000">
                                         </div>
                                     </div>
                                     

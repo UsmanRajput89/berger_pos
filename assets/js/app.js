@@ -604,6 +604,8 @@ Index Of Script
         <td class="text-center">${row.qty}</td>
         <td class="text-center">${row.pcs}</td>
         <td class="text-center">${row.price}</td>
+        <td class="text-center">${row.discount_percent}</td>
+        <td class="text-center">${row.discounted_price}</td>
         <td class="text-center total" data-value="${row.total}"><b>${row.total}</b></td>
 
         </tr>`;
@@ -669,7 +671,7 @@ Index Of Script
     });
 
     $("body").on("submit", "#customer_form", function (e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         let myform = $(this)[0];
         let fd = new FormData(myform);

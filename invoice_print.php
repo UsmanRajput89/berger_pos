@@ -257,7 +257,7 @@ function get_prod_price($type, $id){
                     <th>Item</th>
                     <th>UOM</th>
                     <!-- <th>Pack Size</th> -->
-                    <th>Quantity</th>
+                    <th>Pcs</th>
                     <!-- <th>Quantity</th> -->
                     <th>Price</th>
                     <th>Disc%</th>
@@ -278,9 +278,17 @@ function get_prod_price($type, $id){
                     <tr>
                         <td>
                             <?php
+                                $cat_id = $val['category_id'];
+                                $que = "SELECT category_name FROM categories WHERE category_id = $cat_id"; 
+                                $cat = $obj->custom_query($que);
+                                echo $cat[0]['category_name'];
+                                // echo '<pre>';
+                                // var_dump($cat);
+                                // echo '</pre>';
+                            ?> 
+                            <?php
                                 $res = $obj->select_data('products', 'name', $val['product_id']);
                                 echo $res['name'];
-                                
                             ?>
                         </td>
                         <!-- <td>
@@ -295,11 +303,11 @@ function get_prod_price($type, $id){
                     
                         <td><?php echo $val['pcs']; ?></td>
                         <td>
-                            <?php echo get_prod_price(new_q($val['product_quantity']), $val['category_id']); ?>
+                            <?php echo $item_price = get_prod_price(new_q($val['product_quantity']), $val['category_id']); ?>
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $val['discount_percent']; ?></td>
+                        <td><?php echo $item_price - $val['discounted_price']; ?></td>
+                        <td><?php echo $val['discounted_price']; ?></td>
                         <td><?php echo $val['total']; ?></td>
                     </tr>
 
@@ -312,8 +320,8 @@ function get_prod_price($type, $id){
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3"><strong>Total</strong></td>
-                    <td colspan="4"><strong><?php echo $pcs; ?></strong></strong></td>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td colspan="5"><strong><?php echo $pcs; ?></strong></strong></td>
                     <td><strong><?php echo $total; ?></strong></td>
                 </tr>
                 <tr>
@@ -342,12 +350,12 @@ function get_prod_price($type, $id){
                     </td>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td>
                         <strong>Less: Discount Value</strong>
                     </td>
                     <td>0</td>
-                </tr>
+                </tr> -->
 
                 <tr>
                     <td>
