@@ -6,4 +6,4 @@ session_unset();
 
 session_destroy();
 
-header('Location: '.URL.'login.php');
+header('Location: '.URL.'/login.php');

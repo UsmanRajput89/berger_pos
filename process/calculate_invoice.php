@@ -99,10 +99,6 @@ $insert_Array = array(
 
 $obj->insert('invoices', $insert_Array);
 
-// $product_single_array = array(
-
-// );
-
 $encoded = json_encode($product);
 echo $encoded;
 
